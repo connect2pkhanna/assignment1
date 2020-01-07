@@ -5,7 +5,7 @@ Please run the jar file with arguments alike
 
 ExtractTranformAndLoadProcess.java has the thread(main) which kicks off the process
 
-1.Validating the source if is valid 
+ 1.Validating the source if is valid 
 
 2. Extract the data ,Each extraction process(1 process per csv file) is identified by a id 
    String extractionId = ExtractAndLoadIdProducer.getId() + "-flatFile"; 
