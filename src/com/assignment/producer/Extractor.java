@@ -7,7 +7,7 @@ public abstract class Extractor {
 	// lead to data corruption in case of race-condition
 	private boolean isReadCompletely = false;
 
-	public abstract void defineSource();
+	public abstract void instantiateSource();
 
 	// validate that the source exists either csv,db or flat file
 	public abstract boolean validateSourceAvailability();
@@ -32,7 +32,7 @@ public abstract class Extractor {
 		}
 	}
 
-	public void setSourceDescritption(String description) {
+	public void setId(String description) {
 		this.sourceId = description;
 	}
 

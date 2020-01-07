@@ -1,5 +1,6 @@
 package com.assignment.producer.csv;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,21 +10,21 @@ public class CsvSourceExtractor extends Extractor{
 
 	Object lock= new Object();
 	private Csvsource source;
-	
+	private Map<String,String> identifiers=new HashMap();
 	public Csvsource getSource(){
 		return source;
 	}
 
+	public  CsvSourceExtractor(String filePath) {
+		identifiers.put("file", filePath);
+	}
 	@Override
-	public void defineSource() {
+	public void instantiateSource() {
 		synchronized (lock) {
-			
-		
 		if(source==null) 
 		{
-			Map<String,String> map= new HashMap();
-			// read from file
-			//source.setSource(map);
+			source=new Csvsource();
+			source.setSource(identifiers);;
 		}
 		}
 	}
@@ -35,9 +36,10 @@ public class CsvSourceExtractor extends Extractor{
 		{
 			return false;
 		}
-		// check all fields in the map are valid .i.e file exists and is readble or check if the size if not greater than a threshHold
-		// like as 30 GB to void DOS attack
-		return true;
+		String file=source.getSource().get("file");
+		
+		// check all fields in the map are valid .i.e file exists 
+		return  ((file!=null) && (new File(file).exists()))?true:false;
 	}
 	
 	

@@ -1,6 +1,16 @@
 package com.assignment.common;
 
+/*
+ * each record is unique combination of the parties (from -to) as equals method  & hashcode defines the rule of equality below 
+ * The object is also comparable which is also defined from the strings of the parties involved.
+
+ */
 public class Record implements Comparable<Record>{
+	
+	private String to;
+	private String from;
+	private Double amount;
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -31,9 +41,7 @@ public class Record implements Comparable<Record>{
 		return true;
 	}
 
-	String to;
-	String from;
-	Double amount;
+
 	public String getTo() {
 		return to;
 	}
